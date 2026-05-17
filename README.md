@@ -40,5 +40,11 @@ If the correct sequence is inputted, the game halts and you win, but if you do m
 
 - **Add**: C++ version
 
+## Known Bugs
+
+- Level 1 repeats
+- Maps should be `static`
+- Escape ANSI code for clearing screen
+
 
 
