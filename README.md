@@ -40,6 +40,10 @@ If the correct sequence is entered, the game halts and you win, but if you do mo
 
 - **Add**: C++ version
 
+26/06/2026
+
+- **Upgrade**: README deleting typos and spelling mistakes, add checkboxes to `known bugs`.
+
 ## Known Bugs
 
 - [ ] Level 1 repeats
