@@ -5,11 +5,7 @@
 using namespace std;
 
 void clearScreen() {
-    #ifdef _WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
+    std::cout << "\033[2J\033[H" << std::flush;
 }
 
 class Level {
