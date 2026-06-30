@@ -44,11 +44,15 @@ If the correct sequence is entered, the game halts and you win, but if you do mo
 
 - **Upgrade**: README deleting typos and spelling mistakes, add checkboxes to `known bugs`.
 
+30/6/2026
+
+- **Optimize**: Removed system calls and replaced them with ANSI codes
+
 ## Known Bugs
 
 - [ ] Level 1 repeats
 - [ ] Maps should be `static`
-- [ ] Escape ANSI code for clearing screen
+- [x] Escape ANSI code for clearing screen
 
 
 
