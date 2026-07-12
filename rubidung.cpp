@@ -16,8 +16,8 @@ public:
 
     vector<vector<char>> getMap(int level) {
         switch(level) {
-            case 1:
-                return {
+            case 1: {
+                static const vector<vector<char>> map1 = {
                     {'#', '#', '#', '#', '#',' ',' '},
                     {'#', '.', '.', '.', '#',' ',' '},
                     {'#', '.', '.', '$', '#',' ',' '},
@@ -26,9 +26,11 @@ public:
                     {'#', '.', '.', '.', '#',' ',' '},
                     {'#', '@', '#', '#', '#',' ',' '}
                 };
+                return map1;
+            }
 
-            case 2:
-                return {
+            case 2: {
+                static const vector<vector<char>> map2 = {
                     {'#', '#', '#', '#', '#',' ',' '},
                     {'#', '.', '$', '.', '#',' ',' '},
                     {'#', '.', '.', '.', '#',' ',' '},
@@ -37,7 +39,8 @@ public:
                     {'#', '.', '.', '.', '#',' ',' '},
                     {'#', '@', '#', '#', '#',' ',' '}
                 };
-               
+                return map2;
+            }
         };
 
         return {{}};
