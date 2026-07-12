@@ -11,8 +11,8 @@ void clearScreen() {
 class Level {
 public:
     int levelNumber;
-    vector<vector<char>> map; 
-    vector<vector<char>> getMap(int level) {
+    const vector<vector<char>>& map;
+    const vector<vector<char>>& getMap(int level) {
         switch(level) {
             case 1: {
                 static const vector<vector<char>> map1 = {
@@ -40,8 +40,8 @@ public:
                 return map2;
             }
         };
-
-        return {{}};
+        static const vector<vector<char>> emptyMap;
+        return emptyMap;
     }
 
     Level(int alevelNumber): levelNumber(alevelNumber), map(getMap(alevelNumber)) {}
@@ -128,17 +128,13 @@ bool playLevel(const Level& level) {
 }
 
 int main() {
-
     const int TOTAL_LEVELS = 2;
-    bool win = false;
+    bool win = true;
 
-    Level actualLever = Level(1);
-    win = playLevel(actualLever);
-
-    for (int level = 2; level < TOTAL_LEVELS + 1; level++) {
+    for (int level = 1; level <= TOTAL_LEVELS; level++) {
         if (win) {
-            actualLever = Level(level);
-            win = playLevel(actualLever);
+            Level actualLevel(level);
+            win = playLevel(actualLevel);
         } else {
             break;
         }
@@ -147,7 +143,7 @@ int main() {
     clearScreen();
 
     if (win) {
-        cout<<"Congrats! You won!"<<endl;
+        cout << "Congrats! You won!" << endl;
     }
 
     return 0;
