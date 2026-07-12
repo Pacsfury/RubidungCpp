@@ -11,9 +11,7 @@ void clearScreen() {
 class Level {
 public:
     int levelNumber;
-
     vector<vector<char>> map; 
-
     vector<vector<char>> getMap(int level) {
         switch(level) {
             case 1: {
