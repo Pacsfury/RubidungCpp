@@ -28,14 +28,14 @@ public:
             }
 
             case 2: {
+                // Distinct layout from level 1 so progression is obvious.
                 static const vector<vector<char>> map2 = {
-                    {'#', '#', '#', '#', '#',' ',' '},
-                    {'#', '.', '$', '.', '#',' ',' '},
-                    {'#', '.', '.', '.', '#',' ',' '},
-                    {'#', '#', '#', '.', '#',' ',' '},
-                    {'#', '.', '.', '.', '#',' ',' '},
-                    {'#', '.', '.', '.', '#',' ',' '},
-                    {'#', '@', '#', '#', '#',' ',' '}
+                    {'#', '#', '#', '#', '#', '#', '#'},
+                    {'#', '@', '.', '.', '.', '$', '#'},
+                    {'#', '.', '#', '#', '#', '.', '#'},
+                    {'#', '.', '.', '.', '#', '.', '#'},
+                    {'#', '#', '#', '.', '.', '.', '#'},
+                    {'#', '#', '#', '#', '#', '#', '#'}
                 };
                 return map2;
             }
@@ -56,19 +56,31 @@ public:
     int y;
 
     char getCurrentTile(const Level& level) {
-        if (y < 0 || y >= level.map.size() || x < 0 || x >= level.map[0].size()) {
+        if (y < 0 || y >= (int)level.map.size() || x < 0 || x >= (int)level.map[0].size()) {
             return '#';
         }
         return level.map[y][x]; 
     }
 
-    Player(): x(1), y(6) {}
+    // Start beside the '@' marker for the given level map.
+    explicit Player(const Level& level): x(1), y(1) {
+        for (int i = 0; i < (int)level.map.size(); i++) {
+            for (int j = 0; j < (int)level.map[i].size(); j++) {
+                if (level.map[i][j] == '@') {
+                    x = j;
+                    y = i;
+                    return;
+                }
+            }
+        }
+    }
 };
 
 bool playLevel(const Level& level) {
     bool win = false;
-    Player player;
+    Player player(level);
 
+    cout << "Level " << level.levelNumber << endl;
     for (int i = 0; i < level.map.size(); i++) {
         for (int j = 0; j < level.map[i].size(); j++) {
             cout<<level.map[i][j] << " ";
@@ -129,20 +141,19 @@ bool playLevel(const Level& level) {
 
 int main() {
     const int TOTAL_LEVELS = 2;
-    bool win = true;
+    bool clearedAll = true;
 
     for (int level = 1; level <= TOTAL_LEVELS; level++) {
-        if (win) {
-            Level actualLevel(level);
-            win = playLevel(actualLevel);
-        } else {
+        Level actualLevel(level);
+        if (!playLevel(actualLevel)) {
+            clearedAll = false;
             break;
         }
     }
 
     clearScreen();
 
-    if (win) {
+    if (clearedAll) {
         cout << "Congrats! You won!" << endl;
     }
 
