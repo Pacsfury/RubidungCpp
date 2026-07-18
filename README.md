@@ -50,7 +50,7 @@ If the correct sequence is entered, the game halts and you win, but if you do mo
 
 ## Known Bugs
 
-- [ ] Level 1 repeats
+- [x] Level 1 repeats
 - [x] Maps should be `static`
 - [x] Escape ANSI code for clearing screen
 
