@@ -17,7 +17,7 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
 
     - name: Build
-      run: cl.exe /std:c++20 /EHsc src/*.cpp /Fe:yarc.exe
+      run: cl.exe /std:c++20 /EHsc *.cpp /Fe:yarc.exe
 
     - name: Test
       run: .\yarc.exe --test
