@@ -48,7 +48,7 @@ If the correct sequence is entered, the game halts and you win, but if you do mo
 
 - **Optimize**: Removed system calls and replaced them with ANSI codes
 
-## Known Bugs
+## Known Bugs & Possible Upgrades
 
 - [x] Level 1 repeats
 - [x] Maps should be `static`
